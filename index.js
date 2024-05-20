@@ -55,17 +55,17 @@ app.post("/", async (req, res, next) => {
 });
 
 app.post('/sms', (req, res) => {
-  const { phone, subject } = req.body;
+  const { phone, subject, message, topic } = req.body;
 
-  if (!from || !to || !subject) {
+  if (!phone || !subject || !message || !topic) {
     return res.status(400).json({
-      message: 'Se requieren las propiedades "phone", "subject" en el cuerpo de la solicitud.'
+      message: 'Se requieren las propiedades "phone", "subject", "topic" y "message" en el cuerpo de la solicitud.'
     });
   }
 
   const params_sub = {
     Protocol: 'sms', 
-    TopicArn: 'arn:aws:sns:us-east-1:946074075589:Momo', 
+    TopicArn: topic, 
     Endpoint: phone 
   };
 
@@ -79,7 +79,7 @@ app.post('/sms', (req, res) => {
     } else {
 
       const params = {
-        Message: "Bienvenido a Momo Coffe, ingresando aqui puedes verificar tu cuenta.",
+        Message: message,
         PhoneNumber: phone,
         MessageAttributes: {
           'AWS.SNS.SMS.SenderID': {
