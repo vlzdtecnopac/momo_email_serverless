@@ -2,21 +2,11 @@ const serverless = require("serverless-http");
 const express = require("express");
 const app = express();
 const nodemailer = require('nodemailer');
-const AWS = require('aws-sdk');
 const { contentEmail } = require("./template/template");
-const { PublishCommand } = require('@aws-sdk/client-sns');
-const config = require("./config.json");
+
 require('dotenv').config();
 
 app.use(express.json());
-
-const sns = new AWS.SNS({
-  region: config.region,
-  credentials: {
-    accessKeyId: config.accessKeyId,
-    secretAccessKey: config.secretAccessKey
-  }
-});
 
 app.post("/", async (req, res, next) => {
   const { from, to, subject } = req.body;
@@ -60,39 +50,6 @@ app.post("/", async (req, res, next) => {
     });
   }
 });
-
-app.post("/sms", async (req, res, next) => {
-  try {
-    const params = {
-      Message: `Your OTP code is: ${Math.random().toString().substring(2, 8)}`,
-      PhoneNumber: '+573011625380',
-      MessageAttributes: {
-        'AWS.SNS.SMS.SenderID': {
-          'DataType': 'String',
-          'StringValue': 'YourSenderID'
-        }
-      }
-    };
-
-    await sendSMSMessage(params);
-
-    return res.status(200).json({
-      message: "SMS sent successfully",
-    });
-  } catch (error) {
-    console.error("Error sending SMS:", error);
-    return res.status(500).json({
-      message: "Error sending SMS",
-      error: error.message
-    });
-  }
-});
-
-async function sendSMSMessage(params) {
-  const command = new PublishCommand(params);
-  await sns.send(command);
-}
-
 
 
 module.exports.handler = serverless(app);
