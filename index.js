@@ -93,10 +93,16 @@ app.post('/sms', (req, res) => {
 
       publishTextPromise.then(
         function (data) {
-          res.end(JSON.stringify({ MessageID: data.MessageId }));
+          return res.status(200).json({
+            message: "SMS enviado exitosamente",
+            messageId: data.MessageId
+          });
         }).catch(
           function (err) {
-            res.end(JSON.stringify({ Error: err }));
+            return res.status(500).json({
+              message: "SMS error, no fue enviado",
+              error: err
+            });
           });
 
     }
