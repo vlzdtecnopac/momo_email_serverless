@@ -13,11 +13,11 @@ const sns = new AWS.SNS({ apiVersion: '2010-03-31' })
 app.use(express.json());
 
 app.post("/", async (req, res, next) => {
-  const { from, to, subject } = req.body;
+  const { from, to, subject, client_id } = req.body;
 
-  if (!from || !to || !subject) {
+  if (!from || !to || !subject || !client_id) {
     return res.status(400).json({
-      message: 'Se requieren las propiedades "from", "to" y "subject" en el cuerpo de la solicitud.'
+      message: 'Se requieren las propiedades "from", "to", "subject" y "client_id" en el cuerpo de la solicitud.'
     });
   }
 
@@ -37,13 +37,13 @@ app.post("/", async (req, res, next) => {
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmail
+      html: contentEmail(client_id)
     };
 
     let info = await transporter.sendMail(mailOptions);
 
     return res.status(200).json({
-      message: "Correo enviado exitosamente",
+      message: "Correo enviado...",
       messageId: info.messageId
     });
   } catch (error) {

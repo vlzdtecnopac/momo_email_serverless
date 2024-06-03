@@ -1,4 +1,4 @@
-module.exports.contentEmail = `<!doctype html>
+module.exports.contentEmail = (client_id) =>`<!doctype html>
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -329,7 +329,7 @@ module.exports.contentEmail = `<!doctype html>
                           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tbody>
                               <tr>
-                                <td> <a href="http://htmlemail.io" target="_blank">Verificar Cuenta</a> </td>
+                                <td> <a href="http://momocoffe-lb-401505225.us-east-1.elb.amazonaws.com/users/client/activate/${client_id}" target="_blank">Verificar Cuenta</a> </td>
                               </tr>
                             </tbody>
                           </table>
