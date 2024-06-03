@@ -56,11 +56,11 @@ app.post("/", async (req, res, next) => {
 });
 
 app.post('/sms', (req, res) => {
-  const { phone, subject, message, topic } = req.body;
+  const { phone, subject, message, topic, client_id } = req.body;
 
-  if (!phone || !subject || !message || !topic) {
+  if (!phone || !subject || !message || !topic || !client_id) {
     return res.status(400).json({
-      message: 'Se requieren las propiedades "phone", "subject", "topic" y "message" en el cuerpo de la solicitud.'
+      message: 'Se requieren las propiedades "phone", "subject", "topic", "message" y "client_id" en el cuerpo de la solicitud.'
     });
   }
 
