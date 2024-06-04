@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (orderId, restaurantId, dateInvoice, typePayment, mountCupon, mountPropina, mountSubtotal, mountTotal, line) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, type_payment, mount_cupon, mount_propina, mount_sub_total, mount_total, line) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -16,15 +16,15 @@ module.exports.contentEmailInvoice = (orderId, restaurantId, dateInvoice, typePa
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 80%;">Pedido:</td>
-                <td>${orderId}</td>
+                <td>${order_id}</td>
             </tr>
             <tr>
                 <td style="width: 80%;">Restaurante:</td>
-                <td>${restaurantId}</td>
+                <td>${restaurant_id}</td>
             </tr>
             <tr>
                 <td>Fecha:</td>
-                <td>${dateInvoice}</td>
+                <td>${date_invoice}</td>
             </tr>
         </table>
         <table style="margin: 10px 0px; width: 100%; text-align: left; border-collapse: collapse">
@@ -46,23 +46,23 @@ module.exports.contentEmailInvoice = (orderId, restaurantId, dateInvoice, typePa
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 300px;">Medio de pago:</td>
-                <td>${typePayment}</td>
+                <td>${type_payment}</td>
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td>$ ${mountCupon}</td>
+                <td>$ ${mount_cupon}</td>
             </tr>
             <tr>
                 <td>Propina:</td>
-                <td>$ ${mountPropina}</td>
+                <td>$ ${mount_propina}</td>
              </tr>
             <tr>
                 <td>Sub-Total:</td>
-                <td>$ ${mountSubtotal}</td>
+                <td>$ ${mount_sub_total}</td>
              </tr>
             <tr>
                 <td><h2>Total</h2></td>
-                <td><h2>$ ${mountTotal}</h2></td>
+                <td><h2>$ ${mount_total}</h2></td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
