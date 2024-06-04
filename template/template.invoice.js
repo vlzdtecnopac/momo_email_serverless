@@ -37,9 +37,9 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
             ${line.map(value => `
             <tr style="border-bottom: 1px solid #eee;">
             <td>${value.quantity}</td>
-            <td>${value.productName}</td>
+            <td>${value.product_name}</td>
             <td>${value.tax[0].name} ${parseFloat(value.tax[0].value.toFixed(2))}</td>
-            <td>$ ${value.amountAfterTax}</td>
+            <td>$ ${value.amount_after_tax}</td>
         </tr>
             `)}
         </table>
