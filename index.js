@@ -111,7 +111,7 @@ app.post('/sms', (req, res) => {
 });
 
 app.post('/invoice',  async (req, res, next) => {
-  const { from, to, subject } = req.body;
+  const { from, to, subject, orderId, restaurantId, dateInvoice, typePayment,  mountCupon, mountPropina, mountSubtotal, mountTotal, line } = req.body;
 
   if (!from || !to || !subject) {
     return res.status(400).json({
@@ -135,7 +135,7 @@ app.post('/invoice',  async (req, res, next) => {
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmailInvoice("#FIUWIIE")
+      html: contentEmailInvoice( orderId, restaurantId, dateInvoice, typePayment,  mountCupon, mountPropina, mountSubtotal, mountTotal, line )
     };
 
     let info = await transporter.sendMail(mailOptions);
