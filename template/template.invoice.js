@@ -50,19 +50,19 @@ module.exports.contentEmailInvoice = (orderId, restaurantId, dateInvoice, typePa
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td>$${mountCupon}</td>
+                <td>$ ${mountCupon}</td>
             </tr>
             <tr>
                 <td>Propina:</td>
-                <td>$${mountPropina}</td>
+                <td>$ ${mountPropina}</td>
              </tr>
             <tr>
                 <td>Sub-Total:</td>
-                <td>$${mountSubtotal}</td>
+                <td>$ ${mountSubtotal}</td>
              </tr>
             <tr>
-                <td>Total:</td>
-                <td>$${mountTotal}</td>
+                <td><h2>Total</h2></td>
+                <td><h2>$ ${mountTotal}</h2></td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
