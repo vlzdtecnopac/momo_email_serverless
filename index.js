@@ -134,6 +134,8 @@ WHERE b.bilding_id=$1;`;
   try {
     const results = await db.query(query,[bilding_id]);
 
+    console.log(results);
+
     let transporter = nodemailer.createTransport({
       host: process.env.EMAIL_SMTP,
       port: 465,
@@ -146,6 +148,16 @@ WHERE b.bilding_id=$1;`;
 
     let line = JSON.parse(results.rows[0].product_toteat)
 
+    if(results.rows[0].product_toteat == null){
+      return res.status(401).json({
+        message: [
+          "Este error lo puedes tener por dos factores:",
+          " * EL toteat_check de los parametros para actualizar el building o invoice lo tienes como false",
+          " * Hoy el array de los productos se encuentra vacio en el campo  product_toteat en la tabla bilding"
+        ]
+      });
+    }
+
     let mailOptions = {
       from,
       to,
@@ -154,16 +166,16 @@ WHERE b.bilding_id=$1;`;
       html: contentEmailInvoice( results.rows[0].nombre, results.rows[0].name_shopping, moment().format('MMMM DD YYYY, h:mm:ss a'), results.rows[0].type_payment,  results.rows[0].cupon, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
     };
 
-    let info = await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
     
     return res.status(200).json({
       message: "Correo enviado exitosamente"
     });
   } catch (e) {
-    console.error("Error al enviar el correo:", error);
+    console.error("Error al enviar el correo:", e);
     return res.status(500).json({
       message: "Error al enviar el correo",
-      error: error.message
+      error: e.message
     });
   }
 })
