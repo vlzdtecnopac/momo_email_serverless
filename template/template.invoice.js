@@ -15,23 +15,23 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
         </div>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
-                <td style="width: 180px;">Restaurante:</td>
+                <td style="width: 160px;">Restaurante:</td>
                 <td>${restaurant}</td>
               
             </tr>
             <tr>
-                <td style="width: 180px;">Kiosko:</td>
+                <td style="width: 160px;">Kiosko:</td>
                 <td>${kiosko}</td>
             </tr>
             <tr>
-                <td style="width: 180px;">Fecha:</td>
+                <td style="width: 160px;">Fecha:</td>
                 <td>${date_invoice}</td>
             </tr>
         </table>
         <table style="margin: 10px 0px; width: 100%; text-align: left; border-collapse: collapse">
             <tr>
-                <th style="width: 20%;">Cant</th>
-                <th style="width: 40%;">Producto</th>
+                <th style="width: 10%;">Cant</th>
+                <th style="width: 43%;">Producto</th>
                 <th style="width: 20%;">Iva</th>
                 <th style="width: 20%;">Precio Unit</th>
             </tr>
@@ -46,7 +46,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
         </table>
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
-                <td style="width: 280px;">Medio de pago:</td>
+                <td style="width: 250px;">Medio de pago:</td>
                 <td>${type_payment}</td>
             </tr>
             <tr>
@@ -62,7 +62,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
                 <td>$ ${mount_sub_total}</td>
              </tr>
             <tr>
-                <td style="width: 280px;"><h2>Total: </h2></td>
+                <td style="width: 250px;"><h2>Total: </h2></td>
                 <td><h2>$ ${mount_total}</h2></td>
             </tr>
         </table>
