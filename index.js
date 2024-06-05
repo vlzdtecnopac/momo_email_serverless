@@ -4,6 +4,7 @@ const app = express();
 const nodemailer = require('nodemailer');
 const cors = require("cors");
 const { contentEmail } = require("./template/template");
+var moment = require('moment');
 const { createConnection, endConnection } = require("./db/index");
 require('dotenv').config();
 
