@@ -62,7 +62,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
                 <td>$ ${mount_sub_total}</td>
              </tr>
             <tr>
-                <td style="width: 82%;"><h2>Total: </h2></td>
+                <td style="width: 81%;"><h2>Total: </h2></td>
                 <td><h2>$ ${mount_total}</h2></td>
             </tr>
         </table>
