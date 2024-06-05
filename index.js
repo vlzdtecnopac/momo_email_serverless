@@ -123,9 +123,12 @@ app.post('/invoice',  async (req, res, next) => {
 
   const db = await createConnection();
 
-  const query = `SELECT id, bilding_id, shopping_id, kiosko_id, "name", type_payment, propina, cupon, iva, subtotal, total, state, create_at, update_at, mount_receive, mount_discount,  product_toteat
-  FROM "Bilding" WHERE bilding_id=$1;
-  `;
+  const query = `
+  SELECT b.shopping_id, b.kiosko_id, s.name_shopping, k.nombre,  bilding_id, b.shopping_id, b.kiosko_id, "name", type_payment, propina, cupon, iva, subtotal, total, b.state, b.create_at, b.update_at, mount_receive, mount_discount,  product_toteat
+FROM "Bilding" b
+JOIN "Shopping" s ON b.shopping_id = s.shopping_id
+JOIN "Kiosko" k ON b.kiosko_id = k.kiosko_id
+WHERE b.bilding_id=$1;`;
 
   try {
     const results = await db.query(query,[bilding_id]);
@@ -147,14 +150,14 @@ app.post('/invoice',  async (req, res, next) => {
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmailInvoice( results.rows[0].bilding_id, results.rows[0].shopping_id, results.rows[0].update_at, results.rows[0].type_payment,  results.rows[0].cupon, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
+      html: contentEmailInvoice( results.rows[0].nombre, results.rows[0].name_shopping, results.rows[0].update_at, results.rows[0].type_payment,  results.rows[0].cupon, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
     };
 
     let info = await transporter.sendMail(mailOptions);
     
     return res.status(200).json({
       message: "Correo enviado exitosamente",
-      messageId: ""
+      messageId: info.MessageId
     });
   } catch (e) {
     console.error("Error al enviar el correo:", error);

@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, type_payment, mount_cupon, mount_propina, mount_sub_total, mount_total, line) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_cupon, mount_propina, mount_sub_total, mount_total, line) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -15,12 +15,13 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
         </div>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
-                <td style="width: 120px;">Pedido:</td>
-                <td>${order_id}</td>
+                <td style="width: 120px;">Restaurante:</td>
+                <td>${restaurant}</td>
+              
             </tr>
             <tr>
-                <td style="width: 120px;">Restaurante:</td>
-                <td>${restaurant_id}</td>
+                <td style="width: 120px;">Kiosko:</td>
+                <td>${kiosko}</td>
             </tr>
             <tr>
                 <td style="width: 120px;">Fecha:</td>
@@ -45,7 +46,7 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
         </table>
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
-                <td style="width: 84%;">Medio de pago:</td>
+                <td style="width: 82%;">Medio de pago:</td>
                 <td>${type_payment}</td>
             </tr>
             <tr>
@@ -61,7 +62,7 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
                 <td>$ ${mount_sub_total}</td>
              </tr>
             <tr>
-                <td style="width: 84%;"><h2>Total: </h2></td>
+                <td style="width: 82%;"><h2>Total: </h2></td>
                 <td><h2>$ ${mount_total}</h2></td>
             </tr>
         </table>
