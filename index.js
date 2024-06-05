@@ -157,8 +157,7 @@ WHERE b.bilding_id=$1;`;
     let info = await transporter.sendMail(mailOptions);
     
     return res.status(200).json({
-      message: "Correo enviado exitosamente",
-      messageId: info.MessageId
+      message: "Correo enviado exitosamente"
     });
   } catch (e) {
     console.error("Error al enviar el correo:", error);
