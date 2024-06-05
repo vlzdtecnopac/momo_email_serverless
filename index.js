@@ -2,8 +2,9 @@ const serverless = require("serverless-http");
 const express = require("express");
 const app = express();
 const nodemailer = require('nodemailer');
+const cors = require("cors");
 const { contentEmail } = require("./template/template");
-
+const { createConnection, endConnection } = require("./db/index");
 require('dotenv').config();
 
 var AWS = require('aws-sdk');
@@ -11,6 +12,7 @@ const { contentEmailInvoice } = require("./template/template.invoice");
 const sns = new AWS.SNS({ apiVersion: '2010-03-31' })
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/", async (req, res, next) => {
   const { from, to, subject, client_id } = req.body;
@@ -112,6 +114,22 @@ app.post('/sms', (req, res) => {
 
 app.post('/invoice',  async (req, res, next) => {
   const { from, to, subject, order_id, restaurant_id, date_invoice, type_payment,  mount_cupon, mount_propina, mount_sub_total, mount_total, line } = req.body;
+
+  const db = await createConnection();
+
+  const query = `SELECT id, bilding_id, shopping_id, kiosko_id, "name", product, type_payment, propina, cupon, iva, subtotal, total, state, create_at, update_at, mount_receive, mount_discount, email_payment, product_toteat
+  FROM public."Bilding";
+  `;
+
+  try {
+    const results = await db.query(query);
+
+    res.send(results.rows);
+  } catch (e) {
+    console.error(e.stack);
+    res.send(e.stack);
+  }
+
 
   if (!from || !to || !subject) {
     return res.status(400).json({

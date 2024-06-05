@@ -4,6 +4,12 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs18.x
+  environment:
+    DB_HOST: mongocofee.cflkp1qysre8.us-east-1.rds.amazonaws.com
+    DB_NAME: postgres
+    DB_USER: postgres
+    DB_PASSWORD: Atenea1989
+    DB_PORT: 5432
   region: us-east-1
 
 functions:
@@ -11,3 +17,6 @@ functions:
     handler: index.handler
     events:
       - httpApi: '*'
+
+plugins:
+  - serverless-offline
