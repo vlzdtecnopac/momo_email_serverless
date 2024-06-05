@@ -6,7 +6,8 @@ provider:
   runtime: nodejs18.x
   environment:
     EMAIL_USER: davidvalenzuela@tecnopac.com.co
-    EMAIL_PASSWORD: d^bbF9%!
+    EMAIL_PASSWORD: David2024.
+    EMAIL_SMTP: smtp.hostinger.com
     DB_HOST: mongocofee.cflkp1qysre8.us-east-1.rds.amazonaws.com
     DB_NAME: postgres
     DB_USER: postgres

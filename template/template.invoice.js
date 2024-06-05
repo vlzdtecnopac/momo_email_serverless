@@ -15,15 +15,15 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
         </div>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
-                <td style="width: 80%;">Pedido:</td>
+                <td style="width: 120px;">Pedido:</td>
                 <td>${order_id}</td>
             </tr>
             <tr>
-                <td style="width: 80%;">Restaurante:</td>
+                <td style="width: 120px;">Restaurante:</td>
                 <td>${restaurant_id}</td>
             </tr>
             <tr>
-                <td>Fecha:</td>
+                <td style="width: 120px;">Fecha:</td>
                 <td>${date_invoice}</td>
             </tr>
         </table>
@@ -36,16 +36,16 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
             </tr>
             ${line.map(value => `
             <tr style="border-bottom: 1px solid #eee;">
-            <td>${value.quantity}</td>
-            <td>${value.product_name}</td>
-            <td>${value.tax[0].name} ${parseFloat(value.tax[0].value.toFixed(2))}</td>
-            <td>$ ${value.amount_after_tax}</td>
+            <td style="width:20px">${value?.quantity}</td>
+            <td style="width:220px">${value?.productName}</td>
+            <td style="width:80px">${value?.tax[0].name} ${parseFloat(value?.tax[0].value.toFixed(2))}</td>
+            <td style="width:80px">$ ${value?.amountBeforeTax.toFixed(2)}</td>
         </tr>
             `)}
         </table>
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
-                <td style="width: 300px;">Medio de pago:</td>
+                <td style="width: 70%;">Medio de pago:</td>
                 <td>${type_payment}</td>
             </tr>
             <tr>
@@ -61,7 +61,7 @@ module.exports.contentEmailInvoice = (order_id, restaurant_id, date_invoice, typ
                 <td>$ ${mount_sub_total}</td>
              </tr>
             <tr>
-                <td><h2>Total</h2></td>
+                <td style="width: 70%;"><h2>Total</h2></td>
                 <td><h2>$ ${mount_total}</h2></td>
             </tr>
         </table>

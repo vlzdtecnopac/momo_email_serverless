@@ -115,7 +115,7 @@ app.post('/sms', (req, res) => {
 app.post('/invoice',  async (req, res, next) => {
   const { from, to, subject, bilding_id} = req.body;
  
-  if (!from || !to || !subject) {
+  if (!from || !to || !subject || !bilding_id) {
     return res.status(400).json({
       message: 'Se requieren las propiedades "from", "to", "subject", "bilding_id" en el cuerpo de la solicitud.'
     });
@@ -123,15 +123,15 @@ app.post('/invoice',  async (req, res, next) => {
 
   const db = await createConnection();
 
-  const query = `SELECT id, bilding_id, shopping_id, kiosko_id, "name", product, type_payment, propina, cupon, iva, subtotal, total, state, create_at, update_at, mount_receive, mount_discount, email_payment, product_toteat
+  const query = `SELECT id, bilding_id, shopping_id, kiosko_id, "name", type_payment, propina, cupon, iva, subtotal, total, state, create_at, update_at, mount_receive, mount_discount,  product_toteat
   FROM "Bilding" WHERE bilding_id=$1;
   `;
 
   try {
     const results = await db.query(query,[bilding_id]);
 
-    /*let transporter = nodemailer.createTransport({
-      host: 'smtp.hostinger.com',
+    let transporter = nodemailer.createTransport({
+      host: process.env.EMAIL_SMTP,
       port: 465,
       secure: true,
       auth: {
@@ -140,24 +140,22 @@ app.post('/invoice',  async (req, res, next) => {
       }
     });
 
+    let line = JSON.parse(results.rows[0].product_toteat)
+
     let mailOptions = {
       from,
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmailInvoice( order_id, restaurant_id, date_invoice, type_payment,  mount_cupon, mount_propina, mount_sub_total, mount_total, line )
+      html: contentEmailInvoice( results.rows[0].bilding_id, results.rows[0].shopping_id, results.rows[0].update_at, results.rows[0].type_payment,  results.rows[0].cupon, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
     };
 
     let info = await transporter.sendMail(mailOptions);
-
+    
     return res.status(200).json({
       message: "Correo enviado exitosamente",
-      messageId: info.messageId
-    });*/
-
-
-
-    res.send(results.rows);
+      messageId: ""
+    });
   } catch (e) {
     console.error("Error al enviar el correo:", error);
     return res.status(500).json({
