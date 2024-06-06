@@ -134,8 +134,6 @@ WHERE b.bilding_id=$1;`;
   try {
     const results = await db.query(query,[bilding_id]);
 
-    console.log(results);
-
     let transporter = nodemailer.createTransport({
       host: process.env.EMAIL_SMTP,
       port: 465,
@@ -158,6 +156,7 @@ WHERE b.bilding_id=$1;`;
       });
     }
 
+ 
     let mailOptions = {
       from,
       to,

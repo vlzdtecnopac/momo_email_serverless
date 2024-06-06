@@ -39,8 +39,8 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             <tr style="border-bottom: 1px solid #eee;">
             <td style="width:20px">${value?.quantity}</td>
             <td style="width:220px">${value?.productName}</td>
-            <td style="width:80px">${value?.tax[0].name} ${parseFloat(value?.tax[0].value.toFixed(2))}</td>
-            <td style="width:80px">$ ${value?.amountBeforeTax.toFixed(2)}</td>
+            <td style="width:80px">${value.taxt != undefined ? value?.tax[0]?.name + " " + parseFloat(value?.tax[0]?.value?.toFixed(2)) : ""}</td>
+            <td style="width:80px">$ ${value?.unitPriceAfterTax.toFixed(2)}</td>
         </tr>
             `)}
         </table>
@@ -63,7 +63,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
              </tr>
             <tr>
                 <td style="width: 240px;"><h2>Total: </h2></td>
-                <td style="width: 80px;"><h2>$ ${mount_total}</h2></td>
+                <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
