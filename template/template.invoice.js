@@ -47,7 +47,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 240px;">Medio de pago:</td>
-                <td>${type_payment}</td>
+                <td>${type_payment == "effecty" ? "Efectivo" : "Tarjeta" }</td>
             </tr>
             <tr>
                 <td>Cupón:</td>
@@ -68,7 +68,6 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
             <div>Factura Electrónica</div>
-            <div><a href="https://autofactura-mx.toteat.com/">https://autofactura-mx.toteat.com/</a></div>
         </div>
     </div>
 </body>
