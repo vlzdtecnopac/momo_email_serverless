@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_cupon, mount_propina, mount_sub_total, mount_total, line) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -51,7 +51,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td>$ ${mount_cupon}</td>
+                <td>$ ${mount_discount}</td>
             </tr>
             <tr>
                 <td>Propina:</td>
