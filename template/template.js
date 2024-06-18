@@ -315,7 +315,7 @@ module.exports.contentEmail = (client_id) =>`<!doctype html>
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="header">
-                  <img width="200" src="http://momocoffe-lb-1774679013.us-east-1.elb.amazonaws.com:83/assets/icons/momo_logo_email.png" alt="momo_coffe">
+                  <img width="200" src="http://momo-coffee-prod-lb-1344034087.us-east-1.elb.amazonaws.com:83/assets/icons/momo_logo_email.png" alt="momo_coffe">
                 </td>
               </tr>
               <tr>
@@ -329,7 +329,7 @@ module.exports.contentEmail = (client_id) =>`<!doctype html>
                           <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tbody>
                               <tr>
-                                <td> <a href="http://momocoffe-lb-401505225.us-east-1.elb.amazonaws.com/users/client/activate/${client_id}" target="_blank">Verificar Cuenta</a> </td>
+                                <td> <a href="http://momo-coffee-prod-lb-1344034087.us-east-1.elb.amazonaws.com/users/client/activate/${client_id}" target="_blank">Verificar Cuenta</a> </td>
                               </tr>
                             </tbody>
                           </table>
@@ -350,11 +350,6 @@ module.exports.contentEmail = (client_id) =>`<!doctype html>
                   <td class="content-block">
                     <span class="apple-link">Company Inc, 7-11 Commercial Ct, Belfast BT1 2NB</span>
                     <br> Don't like these emails? <a href="http://htmlemail.io/blog">Unsubscribe</a>.
-                  </td>
-                </tr>
-                <tr>
-                  <td class="content-block powered-by">
-                    Powered by <a href="http://htmlemail.io">HTMLemail.io</a>
                   </td>
                 </tr>
               </table>
