@@ -4,7 +4,9 @@ const app = express();
 const nodemailer = require('nodemailer');
 const cors = require("cors");
 const { contentEmail } = require("./template/template");
-var moment = require('moment');
+var moment = require('moment-timezone');
+const zonaHoraria = 'America/Mexico_City';
+
 const { createConnection, endConnection } = require("./db/index");
 require('dotenv').config();
 
@@ -162,7 +164,7 @@ WHERE b.bilding_id=$1;`;
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmailInvoice( results.rows[0].nombre, results.rows[0].name_shopping, moment().format('MMMM DD YYYY, h:mm:ss a'), results.rows[0].type_payment,  results.rows[0].mount_discount, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
+      html: contentEmailInvoice( results.rows[0].nombre, results.rows[0].name_shopping, moment().tz(zonaHoraria).format('MMMM DD YYYY, h:mm:ss a'), results.rows[0].type_payment,  results.rows[0].mount_discount, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
     };
 
     await transporter.sendMail(mailOptions);
