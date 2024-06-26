@@ -11,7 +11,10 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
             <img width="200" src="http://momo-coffee-prod-lb-1344034087.us-east-1.elb.amazonaws.com:83/assets/icons/momo_logo_email.png" alt="momo_coffe">
-            <p style="font-size: 20px; font-weight: bold;">Recibo Electrónico</p>
+            <p style="font-size: 22px; font-weight: bold;">Recibo Electrónico</p>
+            <p style="font-size: 18px; font-weight: bold;">MOMO Coffe</p>
+            <p style="font-size: 16px; font-weight: bold;">Café diferente para todos.</p>
+            <p style="font-size: 16px; font-weight: bold;">momocoffe.mx</p>
         </div>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
@@ -39,7 +42,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             <tr style="border-bottom: 1px solid #eee;">
             <td style="width:20px">${value?.quantity}</td>
             <td style="width:220px">${value?.productName}</td>
-            <td style="width:80px">${value.taxt != undefined ? value?.tax[0]?.name + " " + parseFloat(value?.tax[0]?.value?.toFixed(2)) : ""}</td>
+            <td style="width:80px">${Number.isNaN(parseFloat(value?.tax[0]?.value?.toFixed(2)))? "" : parseFloat(value?.tax[0]?.value?.toFixed(2)) }</td>
             <td style="width:80px">$ ${value?.unitPriceAfterTax.toFixed(2)}</td>
         </tr>
             `)}
