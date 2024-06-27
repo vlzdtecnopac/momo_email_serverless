@@ -11,10 +11,9 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
             <img width="200" src="http://momo-coffee-prod-lb-1344034087.us-east-1.elb.amazonaws.com:83/assets/icons/momo_logo_email.png" alt="momo_coffe">
-            <p style="font-size: 22px; font-weight: bold;">Recibo Electrónico</p>
-            <p style="font-size: 18px; font-weight: bold;">MOMO Coffe</p>
-            <p style="font-size: 16px; font-weight: bold;">Café diferente para todos.</p>
-            <p style="font-size: 16px; font-weight: bold;">momocoffe.mx</p>
+            <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffe</p>
+            <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
+            <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffe.mx</p>
         </div>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
@@ -54,23 +53,23 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             </tr>
             <tr>
                 <td>Sub-Total:</td>
-                <td>$ ${mount_sub_total}</td>
-            </tr>
-            <tr>
-                <td>Propina:</td>
-                <td>$ ${mount_propina}</td>
+                <td>$ ${mount_sub_total.toFixed(2)}</td>
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td>$ - ${mount_discount}</td>
+                <td>$ - ${mount_discount.toFixed(2)}</td>
+            </tr>
+            <tr>
+                <td>Propina:</td>
+                <td>$ ${mount_propina.toFixed(2)}</td>
             </tr>
             <tr>
                 <td style="width: 240px;"><h2>Total: </h2></td>
-                <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
+                <td style="width: 80px;"><h3>$ ${mount_total.toFixed(2)}</h3></td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
-            <div>Factura Electrónica</div>
+            <div>Recibo Electrónico</div>
         </div>
     </div>
 </body>
