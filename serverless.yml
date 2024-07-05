@@ -8,10 +8,10 @@ provider:
     EMAIL_USER: davidvalenzuela@tecnopac.com.co
     EMAIL_PASSWORD: David2024.
     EMAIL_SMTP: smtp.hostinger.com
-    DB_HOST: mongocofee.cflkp1qysre8.us-east-1.rds.amazonaws.com
+    DB_HOST: momo-db.cdy3ggwtst1p.us-east-1.rds.amazonaws.com
     DB_NAME: postgres
     DB_USER: postgres
-    DB_PASSWORD: Atenea1989
+    DB_PASSWORD: momo2024
     DB_PORT: 5432
   region: us-east-1
 

@@ -53,19 +53,19 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             </tr>
             <tr>
                 <td>Sub-Total:</td>
-                <td>$ ${mount_sub_total.toFixed(2)}</td>
+                <td>$ ${mount_sub_total}</td>
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td>$ - ${mount_discount.toFixed(2)}</td>
+                <td>$ - ${mount_discount}</td>
             </tr>
             <tr>
                 <td>Propina:</td>
-                <td>$ ${mount_propina.toFixed(2)}</td>
+                <td>$ ${mount_propina}</td>
             </tr>
             <tr>
                 <td style="width: 240px;"><h2>Total: </h2></td>
-                <td style="width: 80px;"><h3>$ ${mount_total.toFixed(2)}</h3></td>
+                <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
