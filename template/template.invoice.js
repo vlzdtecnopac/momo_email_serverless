@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -10,7 +10,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
 <body style="font-family: Arial, sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
-            <img width="200" src="http://a59638a22dcac40f8954846bfa28d1e5-1443770537.us-east-1.elb.amazonaws.com:3003/assets/icons/momo_logo_email.png" alt="momo_coffe">
+            <img width="200" src="http://a9e6711b2eaee4936bce3493c7d60035-1308584783.us-east-1.elb.amazonaws.com:3003/assets/icons/momo_logo_email.png" alt="momo_coffe">
             <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffe</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffe.mx</p>
@@ -57,7 +57,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td>$ - ${mount_discount}</td>
+                <td> ${type_discount == '1' ? `${mount_discount} %` : `$ - ${mount_discount}`}</td>
             </tr>
             <tr>
                 <td>Propina:</td>

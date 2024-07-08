@@ -127,10 +127,11 @@ app.post('/invoice',  async (req, res, next) => {
   const db = await createConnection();
 
   const query = `
-  SELECT b.shopping_id, b.kiosko_id, s.name_shopping, k.nombre,  bilding_id, b.shopping_id, b.kiosko_id, "name", type_payment, propina, cupon, iva, subtotal, total, b.state, b.create_at, b.update_at, mount_receive, mount_discount,  product_toteat
+  SELECT b.shopping_id, b.kiosko_id, s.name_shopping, k.nombre,  bilding_id, b.shopping_id, b.kiosko_id, "name", type_payment, propina, cupon, iva, subtotal, total, b.state, b.create_at, b.update_at, mount_receive, mount_discount,  product_toteat,  c.type_discount, c.type_vigente
 FROM "Bilding" b
-JOIN "Shopping" s ON b.shopping_id = s.shopping_id
-JOIN "Kiosko" k ON b.kiosko_id = k.kiosko_id
+LEFT JOIN "Shopping" s ON b.shopping_id = s.shopping_id
+LEFT JOIN "Kiosko" k ON b.kiosko_id = k.kiosko_id
+LEFT JOIN "Cupones" c on c.name_cupon = b.cupon 
 WHERE b.bilding_id=$1;`;
 
   try {
@@ -164,7 +165,7 @@ WHERE b.bilding_id=$1;`;
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmailInvoice( results.rows[0].nombre, results.rows[0].name_shopping, moment().tz(zonaHoraria).format('MMMM DD YYYY, h:mm:ss a'), results.rows[0].type_payment,  results.rows[0].mount_discount, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line )
+      html: contentEmailInvoice( results.rows[0].nombre, results.rows[0].name_shopping, moment().tz(zonaHoraria).format('MMMM DD YYYY, h:mm:ss a'), results.rows[0].type_payment,  results.rows[0].mount_discount, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line, results.rows[0].type_discount )
     };
 
     await transporter.sendMail(mailOptions);
