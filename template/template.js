@@ -315,7 +315,7 @@ module.exports.contentEmail = (client_id) =>`<!doctype html>
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="header">
-                  <img width="200" src="http://a9e6711b2eaee4936bce3493c7d60035-1308584783.us-east-1.elb.amazonaws.com:3003/assets/icons/momo_logo_email.png" alt="momo_coffe">
+                  <img width="200" src="http://a9e6711b2eaee4936bce3493c7d60035-1308584783.us-east-1.elb.amazonaws.com/assets/icons/momo_logo_email.png" alt="momo_coffe">
                 </td>
               </tr>
               <tr>

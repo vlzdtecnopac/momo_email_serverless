@@ -10,7 +10,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
 <body style="font-family: Arial, sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
-            <img width="200" src="http://a9e6711b2eaee4936bce3493c7d60035-1308584783.us-east-1.elb.amazonaws.com:3003/assets/icons/momo_logo_email.png" alt="momo_coffe">
+            <img width="200" src="http://a9e6711b2eaee4936bce3493c7d60035-1308584783.us-east-1.elb.amazonaws.com/assets/icons/momo_logo_email.png" alt="momo_coffe">
             <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffe</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffe.mx</p>
