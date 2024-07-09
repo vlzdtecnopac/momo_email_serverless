@@ -57,7 +57,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td> ${type_discount == '1' ? `${mount_discount} %` : `$ - ${mount_discount}`}</td>
+                <td> ${type_discount == '1' ? `${Match.ceil(mount_discount)} %` : `$ - ${mount_discount}`}</td>
             </tr>
             <tr>
                 <td>Propina:</td>
