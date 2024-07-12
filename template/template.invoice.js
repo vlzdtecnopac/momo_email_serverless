@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount, order_id,  payment_id ) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount, order_id,  payment_id, iva ) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -71,15 +71,15 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             </tr>
             <tr>
                 <td style="width: 240px;"><h2>Base impuesto:</h2></td>
-                <td>$00</td>
+                <td>$ ${mount_sub_total - iva.toFixed(2)}</td>
             </tr>
             <tr>
                 <td style="width: 240px;"><h2>Iva 16%:</h2></td>
-                <td>$00</td>
-            </tr>
+                <td>$ ${iva.toFixed(2)}<</td>
+            </tr> 
             <tr>
                 <td style="width: 240px;"><h2>Total c/impuesto:</h2></td>
-                <td>$00</td>
+                <td>$ ${mount_sub_total + iva.toFixed(2)}<</td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
