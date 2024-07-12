@@ -127,7 +127,9 @@ app.post('/invoice',  async (req, res, next) => {
   const db = await createConnection();
 
   const query = `
-  SELECT b.shopping_id, b.kiosko_id, s.name_shopping, k.nombre,  bilding_id, b.shopping_id, b.kiosko_id, "name", type_payment, propina, cupon, iva, subtotal, total, b.state, b.create_at, b.update_at, mount_receive, mount_discount,  product_toteat,  c.type_discount, c.type_vigente
+  SELECT b.shopping_id, b.kiosko_id, s.name_shopping, k.nombre,  bilding_id, b.shopping_id, b.kiosko_id, "name", 
+  type_payment, propina, cupon, iva, subtotal, total, b.state, b.create_at, b.update_at, mount_receive, mount_discount, 
+  product_toteat, c.type_discount, c.type_vigente
 FROM "Bilding" b
 LEFT JOIN "Shopping" s ON b.shopping_id = s.shopping_id
 LEFT JOIN "Kiosko" k ON b.kiosko_id = k.kiosko_id

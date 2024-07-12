@@ -11,10 +11,12 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
             <img width="200" src="http://a080800a59b394ab99b80c54637d1afe-513654243.us-east-1.elb.amazonaws.com:8081/assets/icons/momo_logo_email.png" alt="momo_coffe">
-            <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffe</p>
+            <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffee</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
-            <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffe.mx</p>
+            <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffee.mx</p>
         </div>
+        
+        <p>--------------------------------------------------</p>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 160px;">Restaurante:</td>
