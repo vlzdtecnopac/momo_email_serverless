@@ -66,29 +66,34 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
                 <td>$ ${mount_propina}</td>
             </tr>
             <tr>
-                <td style="width: 240px;"><h2>Total: </h2></td>
+                <td style="width: 240px;">
+                <h2 style="margin:0px">Total: </h2>
+                <p style="margin:0px">(
+                ${line.map(value => value != 0.00 ? `$ ${value?.unitPriceAfterTax.toFixed(2)} ` : null)}
+                )</p>
+                </td>
                 <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
             <tr>
                 <td style="width: 240px;">Base impuesto:</td>
-                <td>$ ${Number(mount_sub_total) - Number(iva)}</td>
+                <td>$ ${(Number(mount_sub_total) - Number(iva).toFixed(2))}</td>
             </tr>
             <tr>
                 <td style="width: 240px;">Iva 16%</td>
-                <td>$ ${Number(iva)}</td>
+                <td>$ ${Number(iva).toFixed(2)}</td>
             </tr> 
             <tr>
                 <td style="width: 240px;">Total c/impuesto:</td>
-                <td>$ ${Number(mount_sub_total) + Number(iva)}</td>
+                <td>$ ${mount_sub_total}</td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
             <div>Recibo Electrónico</div>
         </div>
         <div>
-        <p>######################################</p>
-        <p style="text-align: center; font-size: 16px;"><b>${order_id}/${payment_id}</b></p>
-        <p>######################################</p>
+        <p>#######################################</p>
+        <p style="text-align: center; font-size: 14px;"><b>${order_id}/${payment_id}</b></p>
+        <p>#######################################</p>
         </div>
     </div>
 </body>
