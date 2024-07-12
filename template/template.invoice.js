@@ -74,9 +74,9 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             <div>Recibo Electrónico</div>
         </div>
         <div>
-        <p>##############################################</p>
+        <p>######################################</p>
         <p>${order_id}/${payment_id}</p>
-        <p>##############################################</p>
+        <p>######################################</p>
         </div>
     </div>
 </body>
