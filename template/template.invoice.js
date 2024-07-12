@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount, order_id,  payment_id, iva ) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount, order_id,  payment_id, iva, table_id ) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -15,9 +15,10 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffee.mx</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px"># ${id}</p>
+            <p style="font-size: 16px; font-weight: bold; margin:0px">mesa ${table_id}</p>
         </div>
         
-        <p style="text-align:center">----------------------------------------------------------------------------</p>
+        <p style="text-align:center">-------------------------------------------------------------------------</p>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 160px;">Pedido:</td>
@@ -30,14 +31,9 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <tr>
                 <td style="width: 160px;">Restaurante:</td>
                 <td>${restaurant}</td>
-              
             </tr>
             <tr>
                 <td style="width: 160px;">Kiosko:</td>
-                <td>${kiosko}</td>
-            </tr>
-               <tr>
-                <td style="width: 160px;">Mesa:</td>
                 <td>${kiosko}</td>
             </tr>
         </table>
@@ -71,13 +67,20 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
                 <td> ${type_discount == '1' ? `${mount_discount} %` : `$ - ${mount_discount}`}</td>
             </tr>
             <tr>
+                <td>Total c/Descuento:</td>
+                <td> 
+                ${type_discount == '1'? `$ ${(mount_discount / 100) * mount_sub_total} %` : null}
+                ${type_discount == '2'? `$ ${mount_sub_total - mount_discount}` : null}
+                </td>
+            </tr>
+            <tr>
                 <td>Propina:</td>
                 <td>$ ${mount_propina}</td>
             </tr>
             <tr>
                 <td style="width: 240px;">
                 <h2 style="margin:0px; font-size:16px">Total: </h2>
-                <p style="margin:0px; fon-size:14px">(${mount_sub_total, mount_propina})</p>
+                <p style="margin:0px; fon-size:14px">(${mount_sub_total} + ${mount_propina})</p>
                 </td>
                 <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
@@ -98,9 +101,9 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <div>Recibo Electrónico</div>
         </div>
         <div style="text-align: center">
-        <p style="text-align: center; font-size: 16px; margin: 0px">Puedes obtener la factura aquí:</p>
-        <a style="text-align: center; font-size: 16px; margin: 0px" href="https://autofactura.mx.toteat.com">https://autofactura.mx.toteat.com</a>
-        <p style="text-align: center; font-size: 16px; margin: 0px">Disponible solo el mes de consumo.</p>
+        <p style="text-align: center; font-size: 16px; margin: 0px">Puedes obtener tu factura aquí:</p>
+        <a style="text-align: center; font-size: 16px; margin: 0px" href="https://autofactura-mx.toteat.com">https://autofactura-mx.toteat.com</a>
+        <p style="text-align: center; font-size: 16px; margin: 0px">Disponible sólo en el mes del consumo.</p>
         <p style="text-align: center; font-size: 14px;">#######################################</p>
         <p style="text-align: center; font-size: 14px;"><b>${order_id}/${payment_id}</b></p>
         <p style="text-align: center; font-size: 14px;">#######################################</p>
