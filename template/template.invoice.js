@@ -17,7 +17,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <p style="font-size: 16px; font-weight: bold; margin:0px"># ${id}</p>
         </div>
         
-        <p style="text-align:center">--------------------------------------------------</p>
+        <p style="text-align:center">----------------------------------------------------------------------</p>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 160px;">Pedido:</td>
