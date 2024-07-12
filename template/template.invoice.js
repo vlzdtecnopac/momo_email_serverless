@@ -70,16 +70,16 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
                 <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
             <tr>
-                <td style="width: 240px;"><h2>Base impuesto:</h2></td>
-                <td>$ ${mount_sub_total - iva.toFixed(2)}</td>
+                <td style="width: 240px;">Base impuesto:</td>
+                <td>$ ${Number(mount_sub_total) - Number(iva)}</td>
             </tr>
             <tr>
-                <td style="width: 240px;"><h2>Iva 16%:</h2></td>
-                <td>$ ${iva.toFixed(2)}<</td>
+                <td style="width: 240px;">Iva 16%</td>
+                <td>$ ${Number(iva)}</td>
             </tr> 
             <tr>
-                <td style="width: 240px;"><h2>Total c/impuesto:</h2></td>
-                <td>$ ${mount_sub_total + iva.toFixed(2)}<</td>
+                <td style="width: 240px;">Total c/impuesto:</td>
+                <td>$ ${Number(mount_sub_total) + Number(iva)}</td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
@@ -87,7 +87,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
         </div>
         <div>
         <p>######################################</p>
-        <p>${order_id}/${payment_id}</p>
+        <p style="text-align: center; font-size: 16px;"><b>${order_id}/${payment_id}</b></p>
         <p>######################################</p>
         </div>
     </div>
