@@ -10,7 +10,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
 <body style="font-family: Arial, sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
-            <img width="200" src="http://a080800a59b394ab99b80c54637d1afe-513654243.us-east-1.elb.amazonaws.com:8081/assets/icons/momo_logo_email.png" alt="momo_coffe">
+            <img width="200" src="http://a080800a59b394ab99b80c54637d1afe-513654243.us-east-1.elb.amazonaws.com:8082/assets/icons/momo_logo_email.png" alt="momo_coffe">
             <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffee</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffee.mx</p>
@@ -68,6 +68,18 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             <tr>
                 <td style="width: 240px;"><h2>Total: </h2></td>
                 <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
+            </tr>
+            <tr>
+                <td style="width: 240px;"><h2>Base impuesto:</h2></td>
+                <td>$00</td>
+            </tr>
+            <tr>
+                <td style="width: 240px;"><h2>Iva 16%:</h2></td>
+                <td>$00</td>
+            </tr>
+            <tr>
+                <td style="width: 240px;"><h2>Total c/impuesto:</h2></td>
+                <td>$00</td>
             </tr>
         </table>
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
