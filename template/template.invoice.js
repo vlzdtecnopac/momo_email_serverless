@@ -95,6 +95,9 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <div>Recibo Electrónico</div>
         </div>
         <div>
+        <p style="text-align: center; font-size: 16px; margin: 0px">Puedes obtener la factura aquí:</p>
+        <a style="text-align: center; font-size: 16px;" href="https://autofactura.mx.toteat.com">https://autofactura.mx.toteat.com</a>
+        <p style="text-align: center; font-size: 16px; margin: 0px">Disponible solo el mes de consumo.</p>
         <p style="text-align: center; font-size: 14px;">#######################################</p>
         <p style="text-align: center; font-size: 14px;"><b>${order_id}/${payment_id}</b></p>
         <p style="text-align: center; font-size: 14px;">#######################################</p>
