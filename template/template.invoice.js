@@ -1,4 +1,4 @@
-module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount, order_id,  payment_id, iva ) => `<!DOCTYPE html>
+module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type_payment, mount_discount, mount_propina, mount_sub_total, mount_total, line, type_discount, order_id,  payment_id, iva ) => `<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -14,6 +14,7 @@ module.exports.contentEmailInvoice = (kiosko, restaurant, date_invoice, type_pay
             <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffee</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffee.mx</p>
+            <p style="font-size: 16px; font-weight: bold; margin:0px"># ${id}</p>
         </div>
         
         <p>--------------------------------------------------</p>
