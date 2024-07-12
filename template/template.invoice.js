@@ -17,8 +17,16 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <p style="font-size: 16px; font-weight: bold; margin:0px"># ${id}</p>
         </div>
         
-        <p>--------------------------------------------------</p>
+        <p style="text-align:center">--------------------------------------------------</p>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
+            <tr>
+                <td style="width: 160px;">Pedido:</td>
+                <td>${order_id}</td>
+            </tr>
+            <tr>
+                <td style="width: 160px;">Fecha:</td>
+                <td>${date_invoice}</td>
+            </tr>
             <tr>
                 <td style="width: 160px;">Restaurante:</td>
                 <td>${restaurant}</td>
@@ -28,10 +36,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
                 <td style="width: 160px;">Kiosko:</td>
                 <td>${kiosko}</td>
             </tr>
-            <tr>
-                <td style="width: 160px;">Fecha:</td>
-                <td>${date_invoice}</td>
-            </tr>
+            
         </table>
         <table style="margin: 10px 0px; width: 100%; text-align: left; border-collapse: collapse">
             <tr>
@@ -69,9 +74,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <tr>
                 <td style="width: 240px;">
                 <h2 style="margin:0px; font-size:16px">Total: </h2>
-                <p style="margin:0p fon-size:14px">(
-                ${line.map(value => value != "0.00" ? `$ ${value?.unitPriceAfterTax.toFixed(2)} ` : null)}
-                )</p>
+                <p style="margin:0px; fon-size:14px">(${mount_sub_total, mount_propina})</p>
                 </td>
                 <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
@@ -92,9 +95,9 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <div>Recibo Electrónico</div>
         </div>
         <div>
-        <p>#######################################</p>
+        <p style="text-align: center; font-size: 14px;">#######################################</p>
         <p style="text-align: center; font-size: 14px;"><b>${order_id}/${payment_id}</b></p>
-        <p>#######################################</p>
+        <p style="text-align: center; font-size: 14px;">#######################################</p>
         </div>
     </div>
 </body>
