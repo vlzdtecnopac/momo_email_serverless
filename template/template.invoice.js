@@ -17,7 +17,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <p style="font-size: 16px; font-weight: bold; margin:0px"># ${id}</p>
         </div>
         
-        <p style="text-align:center">----------------------------------------------------------------------</p>
+        <p style="text-align:center">----------------------------------------------------------------------------</p>
         <table style="width: 100%; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 160px;">Pedido:</td>
@@ -36,7 +36,10 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
                 <td style="width: 160px;">Kiosko:</td>
                 <td>${kiosko}</td>
             </tr>
-            
+               <tr>
+                <td style="width: 160px;">Mesa:</td>
+                <td>${kiosko}</td>
+            </tr>
         </table>
         <table style="margin: 10px 0px; width: 100%; text-align: left; border-collapse: collapse">
             <tr>
@@ -94,9 +97,9 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
         <div style="text-align: center; padding-top: 20px; font-size: 12px;">
             <div>Recibo Electrónico</div>
         </div>
-        <div>
+        <div style="text-align: center">
         <p style="text-align: center; font-size: 16px; margin: 0px">Puedes obtener la factura aquí:</p>
-        <a style="text-align: center; font-size: 16px;" href="https://autofactura.mx.toteat.com">https://autofactura.mx.toteat.com</a>
+        <a style="text-align: center; font-size: 16px; margin: 0px" href="https://autofactura.mx.toteat.com">https://autofactura.mx.toteat.com</a>
         <p style="text-align: center; font-size: 16px; margin: 0px">Disponible solo el mes de consumo.</p>
         <p style="text-align: center; font-size: 14px;">#######################################</p>
         <p style="text-align: center; font-size: 14px;"><b>${order_id}/${payment_id}</b></p>
