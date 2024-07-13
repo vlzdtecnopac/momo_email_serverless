@@ -69,8 +69,8 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <tr>
                 <td>Total c/Descuento:</td>
                 <td> 
-                ${type_discount == '1'? `$ ${(mount_discount / 100) * mount_sub_total} %` : null}
-                ${type_discount == '2'? `$ ${mount_sub_total - mount_discount}` : null}
+                $ ${type_discount == '1'? `${((mount_discount / 100) * mount_sub_total).toFixed(2)} %` : ""}
+                ${type_discount == '2'? `${(mount_sub_total - mount_discount).toFixed(2)}` : ""}
                 </td>
             </tr>
             <tr>
