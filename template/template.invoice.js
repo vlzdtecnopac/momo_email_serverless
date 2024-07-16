@@ -44,14 +44,16 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
                 <th style="width: 20%;">Iva</th>
                 <th style="width: 20%;">Precio Unit</th>
             </tr>
-            ${line.map(value => `
+            ${line.map(value => {
+                if(!value.isExtra){
+                return `
             <tr style="border-bottom: 1px solid #eee;">
             <td style="width:20px">${value?.quantity}</td>
             <td style="width:220px">${value?.productName}</td>
             <td style="width:80px">${Number.isNaN(parseFloat(value?.tax[0]?.value?.toFixed(2)))? "" : parseFloat(value?.tax[0]?.value?.toFixed(2)) }</td>
             <td style="width:80px">$ ${value?.unitPriceAfterTax.toFixed(2)}</td>
         </tr>
-            `)}
+            `}})}
         </table>
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
