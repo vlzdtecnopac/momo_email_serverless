@@ -10,12 +10,12 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
 <body style="font-family: Arial, sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
-            <img width="200" src="http://a080800a59b394ab99b80c54637d1afe-513654243.us-east-1.elb.amazonaws.com:8082/assets/icons/momo_logo_email.png" alt="momo_coffe">
+            <img width="200" src="https://momoadmin.duckdns.org/assets/icons/momo_logo_email.png" alt="momo_coffe">
             <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffee</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos.</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffee.mx</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px"># ${id}</p>
-            <p style="font-size: 16px; font-weight: bold; margin:0px">mesa ${table_id}</p>
+            <p style="font-size: 16px; font-weight: bold; margin:0px">mesa m${table_id}</p>
         </div>
         
         <p style="text-align:center">-------------------------------------------------------------------------</p>
@@ -71,8 +71,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <tr>
                 <td>Total c/Descuento:</td>
                 <td> 
-                $ ${type_discount == '1'? `${((mount_discount / 100) * mount_sub_total).toFixed(2)} %` : ""}
-                ${type_discount == '2'? `${(mount_sub_total - mount_discount).toFixed(2)}` : ""}
+                $ ${type_discount == '1'? `${((mount_discount / 100) * mount_sub_total).toFixed(2)} %` : ""} ${type_discount == '2'? `${(mount_sub_total - mount_discount).toFixed(2)}` : ""}
                 </td>
             </tr>
             <tr>

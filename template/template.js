@@ -315,7 +315,7 @@ module.exports.contentEmail = (client_id) =>`<!doctype html>
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="header">
-                  <img width="200" src="http://a080800a59b394ab99b80c54637d1afe-513654243.us-east-1.elb.amazonaws.com:8082/assets/icons/momo_logo_email.png" alt="momo_coffe">
+                  <img width="200" src="https://momoadmin.duckdns.org/assets/icons/momo_logo_email.png" alt="momo_coffe">
                 </td>
               </tr>
               <tr>
