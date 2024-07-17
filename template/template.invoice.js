@@ -66,12 +66,12 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             </tr>
             <tr>
                 <td>Cupón:</td>
-                <td> ${type_discount == '1' ? `${mount_discount} %` : `$ - ${mount_discount}`}</td>
+                <td> ${`$ - ${mount_discount}`}</td>
             </tr>
             <tr>
                 <td>Total c/Descuento:</td>
                 <td> 
-                $ ${type_discount == '1'? `${((mount_discount / 100) * mount_sub_total).toFixed(2)} %` : ""} ${type_discount == '2'? `${(mount_sub_total - mount_discount).toFixed(2)}` : ""}
+                $ ${(mount_sub_total - mount_discount).toFixed(2)}
                 </td>
             </tr>
             <tr>
@@ -81,17 +81,17 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
             <tr>
                 <td style="width: 240px;">
                 <h2 style="margin:0px; font-size:16px">Total: </h2>
-                <p style="margin:0px; fon-size:14px">(${mount_sub_total} + ${mount_propina})</p>
+                <p style="margin:0px; fon-size:14px">(${mount_sub_total - mount_discount} + ${mount_propina})</p>
                 </td>
                 <td style="width: 80px;"><h3>$ ${mount_total}</h3></td>
             </tr>
             <tr>
                 <td style="width: 240px;">Base impuesto:</td>
-                <td>$ ${(Number(mount_sub_total) - Number(iva).toFixed(2))}</td>
+                <td>$ ${(Number(mount_sub_total) - Number(iva)).toFixed(2)}</td>
             </tr>
             <tr>
                 <td style="width: 240px;">Iva 16%</td>
-                <td>$ ${Number(iva).toFixed(2)}</td>
+                <td>$ ${Number(iva)}</td>
             </tr> 
             <tr>
                 <td style="width: 240px;">Total c/impuesto:</td>

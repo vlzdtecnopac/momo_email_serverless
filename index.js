@@ -151,8 +151,7 @@ WHERE b.bilding_id=$1;`;
 
     let line = JSON.parse(results.rows[0].product_toteat)
 
-    let jsonObject = JSON.parse(results.rows[0].table_id)
-    let table_id = parseInt(Object.keys(jsonObject)[0]);
+    let table_id = results.rows[0].table_id.replace(/[{}]/g, '').replace(/[""]/g, '');
 
     if(results.rows[0].product_toteat == null){
       return res.status(401).json({
