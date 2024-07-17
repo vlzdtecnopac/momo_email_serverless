@@ -169,7 +169,7 @@ WHERE b.bilding_id=$1;`;
       to,
       subject,
       text: 'Error en el email.',
-      html: contentEmailInvoice( results.rows[0].id, results.rows[0].nombre, results.rows[0].name_shopping, moment().tz(zonaHoraria).format('MMMM DD YYYY, h:mm:ss a'), results.rows[0].type_payment,  results.rows[0].mount_discount, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line, results.rows[0].type_discount, results.rows[0].order_id, results.rows[0].payment_id, results.rows[0].iva, table_id )
+      html: contentEmailInvoice( results.rows[0].id, results.rows[0].nombre, results.rows[0].name_shopping, moment().tz(zonaHoraria).format('MMMM/DD/YYYY h:mm a'), results.rows[0].type_payment,  results.rows[0].mount_discount, results.rows[0].propina, results.rows[0].subtotal, results.rows[0].total, line, results.rows[0].type_discount, results.rows[0].order_id, results.rows[0].payment_id, results.rows[0].iva, table_id )
     };
 
     await transporter.sendMail(mailOptions);
