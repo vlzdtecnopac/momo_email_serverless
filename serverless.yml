@@ -3,17 +3,27 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs18.x
-  environment:
-    EMAIL_USER: davidvalenzuela@tecnopac.com.co
-    EMAIL_PASSWORD: David2024.
-    EMAIL_SMTP: smtp.hostinger.com
-    DB_HOST: momo-coffe.cflkp1qysre8.us-east-1.rds.amazonaws.com
-    DB_NAME: postgres
-    DB_USER: momouserdatabase
-    DB_PASSWORD: momo2024!
-    DB_PORT: 5432
+  runtime: nodejs14.x
   region: us-east-1
+  environment:
+    dev:
+      EMAIL_USER: davidvalenzuela@tecnopac.com.co
+      EMAIL_PASSWORD: David2024.
+      EMAIL_SMTP: smtp.hostinger.com
+      DB_HOST: momo-dev-instance-1.c9oa4s8sguow.us-east-1.rds.amazonaws.com
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: momocafe2024!
+      DB_PORT: 5432
+    pro:
+      EMAIL_USER: davidvalenzuela@tecnopac.com.co
+      EMAIL_PASSWORD: David2024.
+      EMAIL_SMTP: smtp.hostinger.com
+      DB_HOST: momo-db-instance-1.c9oa4s8sguow.us-east-1.rds.amazonaws.com
+      DB_NAME: postgres
+      DB_USER: momo2024mx
+      DB_PASSWORD: momocafe2024!
+      DB_PORT: 5432
 
 functions:
   api:
