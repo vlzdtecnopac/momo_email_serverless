@@ -30,7 +30,7 @@ stages:
   dev:
     environment:
       # Override DB_HOST for dev stage
-      DB_HOST: momo-dev-instance-1.c9oa4s8sguow.us-east-1.rds.amazonaws.com
+      DB_HOST: momo-dev-instance-1-us-east-1b.c9oa4s8sguow.us-east-1.rds.amazonaws.com
       DB_NAME: postgres
       DB_USER: postgres
       DB_PASSWORD: momocafe2024!
@@ -40,7 +40,7 @@ stages:
   prod:
     environment:
       # Override DB_HOST for prod stage
-      DB_HOST: momo-db-instance-1.c9oa4s8sguow.us-east-1.rds.amazonaws.com
+      DB_HOST: momo-db-instance-1-us-east-1c.c9oa4s8sguow.us-east-1.rds.amazonaws.com
       DB_NAME: postgres
       DB_USER: momo2024mx
       DB_PASSWORD: momocafe2024!
