@@ -1,15 +1,14 @@
 service: momo-aws-email
 frameworkVersion: '3'
+	
+useDotenv: true
 
 provider:
   name: aws
-  runtime: nodejs16.x
+  runtime: nodejs18.x
   region: us-east-1
-  environment:
-    EMAIL_USER: davidvalenzuela@tecnopac.com.co
-    EMAIL_PASSWORD: David2024.
-    EMAIL_SMTP: smtp.hostinger.com
-   
+
+
 functions:
   api:
     handler: index.handler
@@ -18,32 +17,10 @@ functions:
 
 plugins:
   - serverless-offline
-  - serverless-stage-manager
+  - serverless-dotenv-plugin
+  - serverless-api-stage
 
 custom:
-  stage: ${opt:stage, self:provider.stage}
-  stages: # Define the stages array here
-    - dev
-    - prod
-
-stages:
-  dev:
-    environment:
-      # Override DB_HOST for dev stage
-      DB_HOST: momo-dev-instance-1-us-east-1b.c9oa4s8sguow.us-east-1.rds.amazonaws.com
-      DB_NAME: postgres
-      DB_USER: postgres
-      DB_PASSWORD: momocafe2024!
-      DB_PORT: 5432
+  apiStage:
     variables:
-      stageVar: dev
-  prod:
-    environment:
-      # Override DB_HOST for prod stage
-      DB_HOST: momo-db-instance-1-us-east-1c.c9oa4s8sguow.us-east-1.rds.amazonaws.com
-      DB_NAME: postgres
-      DB_USER: momo2024mx
-      DB_PASSWORD: momocafe2024!
-      DB_PORT: 5432
-    variables:
-      stageVar: prod
+      stage: ${opt:stage, self:provider.stage}

@@ -15,6 +15,8 @@
     "serverless-postgres": "^2.1.1"
   },
   "devDependencies": {
+    "serverless-api-stage": "^1.4.0",
+    "serverless-dotenv-plugin": "^6.0.0",
     "serverless-offline": "^13.6.0",
     "serverless-stage-manager": "^1.0.5"
   }
