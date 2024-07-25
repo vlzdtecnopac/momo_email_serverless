@@ -2,17 +2,18 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
 
     let amountBeforeTax = [];
     let amountAfterTax = [];
+    let contentHtml;
 
-    return `<!DOCTYPE html>
+   contentHtml = `<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Recibo Electrónico Momo Coffee</title>
 </head>
 
-<body style="font-family: Arial, sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
+<body style="font-family: Arial; sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
             <img width="200" src="https://momoadmin.duckdns.org/assets/icons/momo_logo_email.png" alt="momo_coffe">
@@ -25,44 +26,48 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
         <p style='text-align:center' >----------------------------------------------------------------------</p>
         <table style='width: 100%; text-align: left; border-collapse: collapse; display:block'>
             <tr>
-                <td style='width: 160px;'>Pedido:</td>
+                <td style='width: 160px'>Pedido: </td>
                 <td>${order_id}</td>
             </tr>
             <tr>
-                <td style='width: 160px;'>Fecha:</td>
+                <td style='width: 160px'>Fecha: </td>
                 <td>${date_invoice}</td>
             </tr>
             <tr>
-                <td style='width: 160px;'>Restaurante:</td>
+                <td style='width: 160px'>Restaurante: </td>
                 <td>${restaurant}</td>
             </tr>
             <tr>
-                <td style='width: 160px;'>Kiosko:</td>
+                <td style='width: 160px'>Kiosko: </td>
                 <td>${kiosko}</td>
             </tr>
         </table>
+
         <table style='margin: 10px 0px; width: 100%; text-align: left; border-collapse: collapse' >
             <tr>
                 <th style='width: 10%;'>Cant</th>
                 <th style='width: 43%;'>Producto</th>
                 <th style='width: 20%;'>Iva</th>
                 <th style='width: 20%;'>Precio Unit</th>
-            </tr>
-            ${line.map(value => {
-        if (!value.isExtra) {
-            amountBeforeTax.push(value?.amountBeforeTax);
-            amountAfterTax.push(value?.amountAfterTax);
-            return `
+            </tr>`;
+            line.map( value => {
+                if (!value.isExtra) {
+                    amountBeforeTax.push(value?.amountBeforeTax);
+                    amountAfterTax.push(value?.amountAfterTax);
+            contentHtml += `
             <tr style='border-bottom: 1px solid #eee;'>
             <td style='width:20px'>${value?.quantity}</td>
-            <td style='width:220px'>${value?.productName}</td>
+            <td style='width:220px'>${value?.productName.replace(/,/g, "")}</td>
             <td style='width:80px'>${Number.isNaN(parseFloat(value?.tax[0]?.value?.toFixed(2))) ? '' : parseFloat(value?.tax[0]?.value?.toFixed(2))}</td>
             <td style='width:80px'>$ ${value?.unitPriceAfterTax.toFixed(2)}</td>
             </tr>
             `
-        }
-    })}
-        </table>
+                }else{
+                    return null;
+                }
+            })
+       
+            contentHtml +=  `</table>
         <table style="width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; display:block">
             <tr>
                 <td style="width: 240px">Medio de pago:</td>
@@ -122,4 +127,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
 
 </html>
 
-`}
+`
+
+return contentHtml;
+}
