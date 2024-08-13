@@ -16,7 +16,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
 <body style="font-family: Arial; sans-serif; font-size: 14px; background: #f1f1f1; padding: 10px">
     <div style="margin: auto; width: 340px; background: #fff; border-radius: 8px; padding: 10px">
         <div style="text-align: center; padding-bottom: 10px;">
-            <img width="200" src="https://momoadmin.duckdns.org/assets/icons/momo_logo_email.png" alt="momo_coffe">
+            <img width="200" style="margin:auto" src="https://momoadmin.duckdns.org/assets/icons/momo_logo_email.png" alt="momo_coffe">
             <p style="font-size: 18px; font-weight: bold; margin:0px">MOMO Coffee</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">Café diferente para todos</p>
             <p style="font-size: 16px; font-weight: bold; margin:0px">momocoffee.mx</p>
@@ -51,7 +51,7 @@ module.exports.contentEmailInvoice = (id, kiosko, restaurant, date_invoice, type
                 <th style='width: 20%;'>Precio Unit</th>
             </tr>`;
             line.map( value => {
-                if (!value.isExtra) {
+                if (value?.unitPriceAfterTax.toFixed(2) > 0.00) {
                     amountBeforeTax.push(value?.amountBeforeTax);
                     amountAfterTax.push(value?.amountAfterTax);
             contentHtml += `
